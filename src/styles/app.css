@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Outfit", sans-serif;
+  
+  /* Minimalist neutral dark theme (pure crisp grays) */
+  --color-slate-800: #262626; /* neutral-800 */
+  --color-slate-900: #171717; /* neutral-900 */
+  --color-slate-950: #0a0a0a; /* neutral-950 */
+  
+  /* PUSH/accept: soft, muted natural green */
+  --color-emerald-300: #86efac;
+  --color-emerald-400: #4ade80;
+  --color-emerald-500: #22c55e;
+  
+  /* POP/reject: soft, muted warm red */
+  --color-rose-300: #fca5a5;
+  --color-rose-400: #f87171;
+  --color-rose-500: #ef4444;
+  
+  /* Active/highlight: subtle muted sand/gold */
+  --color-amber-300: #fde047;
+  --color-amber-400: #facc15;
+  --color-amber-500: #eab308;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-300 antialiased font-sans min-h-screen overflow-x-hidden;
+    /* Pure minimalist clean neutral background with no gradients */
+    background: none;
+    background-color: #0a0a0a;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+  }
+  
+  .glass-button {
+    @apply relative overflow-hidden bg-white/5 border border-white/10 rounded-lg px-4 py-2 font-medium text-sm transition-all hover:bg-white/10 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .glass-input {
+    @apply bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-white placeholder-slate-500;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+}
+
+/* Animations that aren't natively supported easily by tailwind utilities */
+@keyframes push-flash {
+  0% { transform: translateY(-10px); opacity: 0; background-color: theme('colors.emerald.500/30'); }
+  50% { background-color: theme('colors.emerald.500/50'); }
+  100% { transform: translateY(0); opacity: 1; background-color: transparent; }
+}
+
+@keyframes pop-flash {
+  0% { opacity: 1; height: 32px; background-color: theme('colors.rose.500/50'); }
+  100% { opacity: 0; height: 0; background-color: theme('colors.rose.500/10'); padding: 0; margin: 0; border-width: 0; }
+}
+
+.animate-push {
+  animation: push-flash 300ms ease-out forwards;
+}
+
+.animate-pop {
+  animation: pop-flash 300ms ease-out forwards;
+  overflow: hidden;
+}
