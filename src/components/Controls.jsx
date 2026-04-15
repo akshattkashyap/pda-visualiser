@@ -20,6 +20,16 @@ export default function Controls({ forward, backward, reset, speed, setSpeed, is
           <SkipBack size={16} /> Back
         </button>
         <button 
+          onClick={() => setRunning(!isRunning)}
+          className={`glass-button flex items-center gap-2 shadow-lg transition-colors ${
+            isRunning 
+            ? 'bg-rose-500/20 text-rose-300 border-rose-500/30 hover:bg-rose-500/30' 
+            : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/30'
+          }`}
+        >
+          {isRunning ? <><Pause size={16} /> Pause</> : <><Play size={16} /> Run</>}
+        </button>
+        <button 
           onClick={forward}
           disabled={!canGoForward && !isRunning}
           className="glass-button flex items-center gap-2 text-slate-300"
@@ -29,17 +39,6 @@ export default function Controls({ forward, backward, reset, speed, setSpeed, is
       </div>
 
       <div className="flex items-center gap-4">
-        <button 
-          onClick={() => setRunning(!isRunning)}
-          className={`glass-button flex items-center gap-2 shadow-lg transition-colors ${
-            isRunning 
-            ? 'bg-rose-500/20 text-rose-300 border-rose-500/30 hover:bg-rose-500/30' 
-            : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/30'
-          }`}
-        >
-          {isRunning ? <><Pause size={16} /> Pause</> : <><Play size={16} /> Run All</>}
-        </button>
-
         <div className="flex items-center gap-3 text-sm text-slate-400 font-medium">
           <span>Speed</span>
           <input 

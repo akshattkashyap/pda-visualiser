@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TransitionTable from './TransitionTable';
 import { examples } from '../engine/examples';
-import { Plus, Download } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 const E = "ε";
 
@@ -84,12 +84,6 @@ export default function DefinitionPanel({ pdaDef, setPdaDef, inputString, setInp
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && load(inputString)}
           />
-          <button 
-            onClick={() => load(inputString)}
-            className="glass-button bg-blue-500/20 text-blue-300 border-blue-500/30 hover:bg-blue-500/30 flex items-center gap-2"
-          >
-            <Download size={16} /> Load Tape
-          </button>
         </div>
       </div>
 

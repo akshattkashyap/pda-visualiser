@@ -92,6 +92,24 @@ export const examples = [
       ],
     },
   },
+  {
+    id: "custom",
+    name: "Custom (Empty PDA)",
+    description: "Define your own states and transition functions.",
+    defaultInput: "",
+    pda: {
+      states: [
+        { id: "q0", label: "q0", isStart: true, isAccept: false },
+      ],
+      inputAlphabet: ["a", "b"],
+      stackAlphabet: ["Z"],
+      startState: "q0",
+      startStackSymbol: "Z",
+      acceptStates: [],
+      acceptMode: "finalState",
+      transitions: [],
+    },
+  },
 ];
 
 export const defaultExample = examples[1]; // aⁿbⁿ

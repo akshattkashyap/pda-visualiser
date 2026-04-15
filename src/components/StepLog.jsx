@@ -41,16 +41,18 @@ export default function StepLog({ log }) {
                 </div>
                 
                 {r ? (
-                  <div className="flex items-center gap-2 flex-1 whitespace-nowrap">
-                    <span>{r.from}</span>
-                    <span className="text-slate-500">,</span>
+                  <div className="flex items-center gap-0.5 flex-1 whitespace-nowrap">
+                    <span className="text-slate-500">δ(</span>
+                    <span className="text-slate-300">{r.from}</span>
+                    <span className="text-slate-600">, </span>
                     <span className="text-amber-300 font-bold">{r.input}</span>
-                    <span className="text-slate-500">,</span>
-                    <span className={entry.type === "POP" ? "text-rose-400" : ""}>{r.stackPop}</span>
+                    <span className="text-slate-600">, </span>
+                    <span className={entry.type === "POP" ? "text-rose-400" : "text-slate-400"}>{r.stackPop}</span>
+                    <span className="text-slate-500">/</span>
+                    <span className={entry.type === "PUSH" ? "text-emerald-400" : "text-slate-400"}>{r.stackPush}</span>
+                    <span className="text-slate-500">)</span>
                     <span className="text-slate-500 mx-1">→</span>
-                    <span>{r.to}</span>
-                    <span className="text-slate-500">,</span>
-                    <span className={entry.type === "PUSH" ? "text-emerald-400" : ""}>{r.stackPush}</span>
+                    <span className="text-slate-300 font-bold">{r.to}</span>
                   </div>
                 ) : (
                   <div className="flex-1 text-red-400 italic">Path exhausted</div>
