@@ -29,7 +29,7 @@ export const examples = [
   },
   {
     id: "equal_ab",
-    name: "Equal a's and b's",
+    name: "aⁿ bⁿ",
     description: "{ aⁿ bⁿ | n ≥ 1 } — Simple push/pop on a single symbol",
     defaultInput: "aaabbb",
     pda: {
@@ -56,7 +56,7 @@ export const examples = [
   },
   {
     id: "palindromes",
-    name: "Palindromes over {a,b}",
+    name: "Even Palindromes over {a,b}",
     description: "{ w | w = wᴿ } — Pushes first half, pops second half",
     defaultInput: "abba",
     pda: {
@@ -94,5 +94,5 @@ export const examples = [
   },
 ];
 
-export const defaultExample = examples[2]; // Palindromes
+export const defaultExample = examples[1]; // aⁿbⁿ
 export const defaultPDA = defaultExample.pda;

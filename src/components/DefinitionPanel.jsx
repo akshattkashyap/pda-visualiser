@@ -63,7 +63,7 @@ export default function DefinitionPanel({ pdaDef, setPdaDef, inputString, setInp
         <select 
           className="glass-input cursor-pointer min-w-[200px]"
           onChange={handleLoadExample}
-          defaultValue="palindromes"
+          defaultValue="equal_ab"
         >
           <option value="" disabled>Load Example...</option>
           {examples.map(ex => (

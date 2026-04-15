@@ -35,7 +35,7 @@ export default function StateDiagram({ pdaDef, activeState, accepted, lastRule }
     // cy = enough room for: topPad + text block + gap + arc + node radius
     const cy = topPadding + selfLoopTextH + labelArcGap + arcHeight + R + 10;
 
-    const spacingX = Math.max(250, R * 6);
+    const spacingX = Math.max(160, R * 5);
     const startX = R + 80;
 
     const nodes = states.map((s, i) => ({
@@ -56,7 +56,7 @@ export default function StateDiagram({ pdaDef, activeState, accepted, lastRule }
       return { ...e, from, to, isSelfLoop: e.from === e.to };
     }).filter(Boolean);
 
-    const svgW = Math.max(800, startX + states.length * spacingX + 80);
+    const svgW = startX + (states.length - 1) * spacingX + R + 80;
     const svgH = cy + R + 60;
 
     return { nodes, edges, R, LINE_HEIGHT, width: svgW, height: svgH };
@@ -66,8 +66,8 @@ export default function StateDiagram({ pdaDef, activeState, accepted, lastRule }
   const LH = layout.LINE_HEIGHT;
 
   return (
-    <div className="w-full h-full overflow-auto bg-black/40 hide-scrollbar">
-      <svg width={layout.width} height={layout.height} className="mx-auto block" style={{ minWidth: '100%' }}>
+    <div className="w-full h-full overflow-auto bg-black/40 hide-scrollbar flex items-center justify-center">
+      <svg width={layout.width} height={layout.height} className="block flex-shrink-0">
         <defs>
           <marker id="ah" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
             <polygon points="0 0, 10 3.5, 0 7" fill="rgba(148,163,184,0.6)" />
