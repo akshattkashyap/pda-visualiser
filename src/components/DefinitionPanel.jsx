@@ -139,17 +139,20 @@ export default function DefinitionPanel({ pdaDef, setPdaDef, inputString, setInp
         <div className="flex flex-wrap items-center gap-2 mb-4 bg-black/20 p-3 rounded-lg border border-white/5">
           <input className="glass-input w-20 text-center font-mono placeholder:font-sans" placeholder="from" value={newRule.from} onChange={e => setNewRule({...newRule, from: e.target.value})} />
           <span className="text-slate-500">,</span>
-          <input className="glass-input w-16 text-center text-amber-300 font-mono font-bold placeholder:font-sans" placeholder="in ε" value={newRule.input} onChange={e => setNewRule({...newRule, input: e.target.value})} />
+          <input className="glass-input w-16 text-center text-amber-300 font-mono font-bold placeholder:font-sans" placeholder="in ε" value={newRule.input} onChange={e => setNewRule({...newRule, input: e.target.value.replace(/-/g, 'ε')})} title="Type '-' for ε" />
           <span className="text-slate-500">,</span>
-          <input className="glass-input w-16 text-center text-rose-300 font-mono font-bold placeholder:font-sans" placeholder="pop ε" value={newRule.stackPop} onChange={e => setNewRule({...newRule, stackPop: e.target.value})} />
+          <input className="glass-input w-16 text-center text-rose-300 font-mono font-bold placeholder:font-sans" placeholder="pop ε" value={newRule.stackPop} onChange={e => setNewRule({...newRule, stackPop: e.target.value.replace(/-/g, 'ε')})} title="Type '-' for ε" />
           <span className="text-white/30 hidden sm:inline">→</span>
           <input className="glass-input w-20 text-center font-mono placeholder:font-sans" placeholder="to" value={newRule.to} onChange={e => setNewRule({...newRule, to: e.target.value})} />
           <span className="text-slate-500">,</span>
-          <input className="glass-input w-20 text-center text-emerald-300 font-mono font-bold placeholder:font-sans" placeholder="push ε" value={newRule.stackPush} onChange={e => setNewRule({...newRule, stackPush: e.target.value})} />
+          <input className="glass-input w-20 text-center text-emerald-300 font-mono font-bold placeholder:font-sans" placeholder="push ε" value={newRule.stackPush} onChange={e => setNewRule({...newRule, stackPush: e.target.value.replace(/-/g, 'ε')})} title="Type '-' for ε" />
           
-          <button onClick={handleAddRule} className="glass-button bg-emerald-500/20 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/40 ml-auto">
-            Add
-          </button>
+          <div className="flex flex-col ml-auto gap-1">
+            <button onClick={handleAddRule} className="glass-button bg-emerald-500/20 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/40 w-full">
+              Add
+            </button>
+            <span className="text-xs text-slate-400 text-center mt-1">Tip: type <b>-</b> for ε</span>
+          </div>
         </div>
 
         <div className="flex-1 overflow-auto hide-scrollbar min-h-[300px]">
